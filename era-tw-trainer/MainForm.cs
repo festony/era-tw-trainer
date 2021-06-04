@@ -93,6 +93,10 @@ namespace era_tw_trainer
             textBoxTps.Text = v.ToString();
             v = trainer.readToonProp(toon, AreaIndexes.MAX_STATUS_AREA, (int)StatusAreaFields.TPS);
             textBoxMaxTps.Text = v.ToString();
+            v = trainer.readToonProp(toon, AreaIndexes.STATUS_AREA, (int)StatusAreaFields.情绪);
+            textBoxStatusMood.Text = v.ToString();
+            v = trainer.readToonProp(toon, AreaIndexes.STATUS_AREA, (int)StatusAreaFields.理性);
+            textBoxStatusRational.Text = v.ToString();
             textBoxTps.Enabled = toon == trainer.player;
             textBoxMaxTps.Enabled = toon == trainer.player;
 
@@ -325,6 +329,36 @@ namespace era_tw_trainer
 
 
 
+
+            lineHeightLess = 25;
+            colWidthLess = 100;
+
+            var textBoxPalamFieldsList = new List<CustomizedTextBox>();
+            var bumpPalamKFieldsList = new List<CustomizedTextBox>();
+
+            i = 0;
+            foreach (var field in Enum.GetValues(typeof(PalamAreaFields)))
+            {
+                var valTextBox = new CustomizedTextBox("customizedTextBox_" + field.ToString(), trainer, toon, AreaIndexes.PALAM_AREA, (int)field);
+                var x = i % 5;
+                var y = i / 5;
+                valTextBox.Location = new System.Drawing.Point(textBoxPalamSubAddr.Location.X + colWidthLess * x, textBoxPalamSubAddr.Location.Y + lineHeightLess * (y + 1));
+                valTextBox.Size = new System.Drawing.Size(55, 21);
+                valTextBox.TabIndex = 300 + i;
+                this.Controls.Add(valTextBox);
+                customizedControls.Add(valTextBox);
+                textBoxPalamFieldsList.Add(valTextBox);
+                if (new HashSet<PalamAreaFields> { PalamAreaFields.快A, PalamAreaFields.快B, PalamAreaFields.快C, PalamAreaFields.快M, PalamAreaFields.快V}.Contains((PalamAreaFields)field))
+                {
+                    bumpPalamKFieldsList.Add(valTextBox);
+                }
+
+                i++;
+            }
+            buttonMaxPalamK.Click += (o, e) => bumpPalamKFieldsList.ForEach(t => { t.Text = "5000000"; t.updateVal(); });
+            buttonUpdatePalam.Click += (o, e) => textBoxPalamFieldsList.ForEach(t => t.updateVal());
+
+
         }
 
         private void listBoxToons_SelectedIndexChanged(object sender, EventArgs e)
@@ -343,11 +377,32 @@ namespace era_tw_trainer
             trainer.writeToonProp64(toon, AreaIndexes.MAX_STATUS_AREA, (int)StatusAreaFields.酒气, int.Parse(textBoxMaxDrunk.Text));
             trainer.writeToonProp64(toon, AreaIndexes.STATUS_AREA, (int)StatusAreaFields.精力, int.Parse(textBoxSpirit.Text));
             trainer.writeToonProp64(toon, AreaIndexes.MAX_STATUS_AREA, (int)StatusAreaFields.精力, int.Parse(textBoxMaxSpirit.Text));
+            trainer.writeToonProp64(toon, AreaIndexes.STATUS_AREA, (int)StatusAreaFields.情绪, int.Parse(textBoxStatusMood.Text));
+            trainer.writeToonProp64(toon, AreaIndexes.STATUS_AREA, (int)StatusAreaFields.理性, int.Parse(textBoxStatusRational.Text));
             if (toon == trainer.player)
             {
                 trainer.writeToonProp64(toon, AreaIndexes.STATUS_AREA, (int)StatusAreaFields.TPS, int.Parse(textBoxTps.Text));
                 trainer.writeToonProp64(toon, AreaIndexes.MAX_STATUS_AREA, (int)StatusAreaFields.TPS, int.Parse(textBoxMaxTps.Text));
             }
+
+            //var xxx = new HashSet<Char>();
+
+            //foreach(var t in trainer.toons)
+            //{
+            //    var name = t.name;
+            //    foreach(var c in name.ToCharArray())
+            //    {
+            //        xxx.Add(c);
+            //    }
+            //}
+
+            //var s = "";
+            //foreach(var c in xxx)
+            //{
+            //    s += c;
+            //}
+
+            //Trace.WriteLine("######### " + s);
         }
 
         private void buttonUpdateHaoGan_Click(object sender, EventArgs e)
@@ -357,6 +412,61 @@ namespace era_tw_trainer
             {
                 trainer.writeToonProp64(toon, AreaIndexes.HAO_GAN_AREA, (int)HaoGanAreaFields.好感, int.Parse(textBoxHaoGan.Text));
                 trainer.writeToonProp64(toon, AreaIndexes.HAO_GAN_AREA, (int)HaoGanAreaFields.依赖, int.Parse(textBoxYiLai.Text));
+            }
+        }
+
+        private void textBoxSearchByNamePinyin_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxSearchByNamePinyin.Text))
+            {
+                clearSearchRes();
+            }
+            var indexes = trainer.findNameMatch(textBoxSearchByNamePinyin.Text);
+            updateSearchResult(indexes);
+        }
+
+        private void updateSearchResult(List<int> indexes)
+        {
+            listBoxToons.Items.Clear();
+            for(int i=0; i< trainer.names.Count; i++)
+            {
+                if (indexes.Contains(i))
+                {
+                    listBoxToons.Items.Add("    ##" + trainer.toons[i].name + "####");
+                }
+                else
+                {
+                    listBoxToons.Items.Add(trainer.toons[i].name);
+                }
+            }
+        }
+
+        private void clearSearchRes()
+        {
+            listBoxToons.Items.Clear();
+            for (int i = 0; i < trainer.names.Count; i++)
+            {
+                listBoxToons.Items.Add(trainer.toons[i].name);
+            }
+        }
+
+        private void buttonMaxHaogan_Click(object sender, EventArgs e)
+        {
+            bool update = false;
+            if (string.IsNullOrWhiteSpace(textBoxHaoGan.Text) || int.Parse(textBoxHaoGan.Text) < 60000)
+            {
+                update = true;
+                textBoxHaoGan.Text = "60000";
+            }
+            if (string.IsNullOrWhiteSpace(textBoxYiLai.Text) || int.Parse(textBoxYiLai.Text) < 200)
+            {
+                update = true;
+                textBoxYiLai.Text = "200";
+            }
+
+            if(update)
+            {
+                buttonUpdateHaoGan.PerformClick();
             }
         }
     }

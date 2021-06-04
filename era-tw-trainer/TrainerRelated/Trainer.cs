@@ -582,5 +582,46 @@ namespace era_tw_trainer
 
         //TODO: $$$
         // TODO: search?
+
+        public List<int> findNameMatch(string s)
+        {
+            var r = new List<int>();
+
+            var chars = new List<HashSet<char>>();
+
+            foreach(var ss in s.Split(' '))
+            {
+                var ssss = ss.Trim();
+                if (string.IsNullOrWhiteSpace(ssss))
+                {
+                    continue;
+                }
+                var cres = PinYinMap.findMatch(ssss);
+                if (cres.Count > 0)
+                {
+                    chars.Add(cres);
+                }
+            }
+
+            for(int i=0; i<toons.Count; i++)
+            {
+                var n = toons[i].name;
+                bool contain = true;
+                foreach(var cres in chars)
+                {
+                    if (!PinYinMap.match(cres, n))
+                    {
+                        contain = false;
+                        break;
+                    }
+                }
+                if (contain)
+                {
+                    r.Add(i);
+                }
+            }
+
+            return r;
+        }
     }
 }

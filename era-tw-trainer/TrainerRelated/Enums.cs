@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace era_tw_trainer.TrainerRelated
 {
+
+    // name chars: 博麗霊夢留琴喀娜安貝拉爾魅魔桑尼米克露切德斯塔薩菲雅北白河千百合岡崎美伊吹萃香霧雨理沙亜大妖精琪諾十六夜咲蕾莉雷特愛絲瑪格羅怀布莱普利茲姆巴梅蘭魂魄橙八雲藍紫奈蒂蘿射命丸文四季映姫東風谷早苗坂神子洩矢諏訪比那名居天永江衣玖火焔猫燐烏路空古明地恋納琳多良小傘封獣鵺海棠極茨木華扇ふわ艾倫朝倉里易覚芙朶城荷取鈴仙?優曇院因幡帝帕秋聖蓮豊聡耳秦心紅悪水橋琶西藤原妹蓬山輝今泉影狼星熊勇儀犬走椛行寺幽上沢慧音見二岩猯藏本少針妙意赤蛮奇霍瓦洛欣可野塚町静葉穣鍵雛稗田阿求宇佐赫恩黒女一輪村紗蜜寅響宮芳青娥蘇我屠自物部都若鷺九弁堀川鼓鬼人正邪綿月依號朱綺雪舞菫清瑚来稀探勞皮純狐提亞碧祖胡桃幻妮緹歡乃高吽成丁礼摩隠岐苑戎瓔花牛潤庭渡久侘歌吉弔杖刀偶磨弓埴袿驪駒
     enum AreaIndexes
     {
         STATUS_AREA = 0,
@@ -14,7 +16,7 @@ namespace era_tw_trainer.TrainerRelated
         FEATURES_AREA = 3,
         EXPERIENCES_AREA = 4,
         KE_YIN_AREA = 5,
-        TEMP_LEVELS_AREA = 6,
+        PALAM_AREA = 6,
         HAO_GAN_AREA = 9
     }
 
@@ -39,7 +41,10 @@ namespace era_tw_trainer.TrainerRelated
         气力 = 0x18,
         精力 = 0x40,
         TPS = 0x50,
-        酒气 = 0x88
+        酒气 = 0x88,
+        情绪 = 0x60,
+        理性 = 0x68
+            // what's 0x38 and 0x40??
     }
 
     enum SkillsAreaFeelFields
@@ -317,5 +322,27 @@ namespace era_tw_trainer.TrainerRelated
     {
         好感 = 0x20,
         依赖 = 0x30
+    }
+
+    enum PalamAreaFields
+    {
+        快C = 0x10,
+        快V = 0x18,
+        快A = 0x20,
+        快B = 0x28,
+        快M = 0x30,
+        润滑 = 0x58,
+        恭顺 = 0x60,
+        欲情 = 0x68,
+        屈服 = 0x70,
+        习得 = 0x78,
+        耻情 = 0x80,
+        苦痛 = 0x88,
+        恐怖 = 0x90,
+        好意 = 0xB0,
+        优越 = 0xB8,
+        反感 = 0x100,
+        不快 = 0x108,
+        抑郁 = 0x110
     }
 }

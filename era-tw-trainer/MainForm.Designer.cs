@@ -74,6 +74,11 @@ namespace era_tw_trainer
             this.labelPalam = new System.Windows.Forms.Label();
             this.textBoxPalamSubAddr = new System.Windows.Forms.TextBox();
             this.buttonUpdatePalam = new System.Windows.Forms.Button();
+            this.buttonMaxPalamK = new System.Windows.Forms.Button();
+            this.textBoxStatusMood = new System.Windows.Forms.TextBox();
+            this.textBoxStatusRational = new System.Windows.Forms.TextBox();
+            this.textBoxSearchByNamePinyin = new System.Windows.Forms.TextBox();
+            this.buttonMaxHaogan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -448,18 +453,64 @@ namespace era_tw_trainer
             // 
             // buttonUpdatePalam
             // 
-            this.buttonUpdatePalam.Location = new System.Drawing.Point(1208, 193);
+            this.buttonUpdatePalam.Location = new System.Drawing.Point(1180, 193);
             this.buttonUpdatePalam.Name = "buttonUpdatePalam";
             this.buttonUpdatePalam.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdatePalam.TabIndex = 44;
             this.buttonUpdatePalam.Text = "Update";
             this.buttonUpdatePalam.UseVisualStyleBackColor = true;
             // 
+            // buttonMaxPalamK
+            // 
+            this.buttonMaxPalamK.Location = new System.Drawing.Point(1270, 193);
+            this.buttonMaxPalamK.Name = "buttonMaxPalamK";
+            this.buttonMaxPalamK.Size = new System.Drawing.Size(75, 23);
+            this.buttonMaxPalamK.TabIndex = 45;
+            this.buttonMaxPalamK.Text = "MaxK";
+            this.buttonMaxPalamK.UseVisualStyleBackColor = true;
+            // 
+            // textBoxStatusMood
+            // 
+            this.textBoxStatusMood.Location = new System.Drawing.Point(607, 134);
+            this.textBoxStatusMood.Name = "textBoxStatusMood";
+            this.textBoxStatusMood.Size = new System.Drawing.Size(75, 21);
+            this.textBoxStatusMood.TabIndex = 46;
+            // 
+            // textBoxStatusRational
+            // 
+            this.textBoxStatusRational.Location = new System.Drawing.Point(607, 161);
+            this.textBoxStatusRational.Name = "textBoxStatusRational";
+            this.textBoxStatusRational.Size = new System.Drawing.Size(75, 21);
+            this.textBoxStatusRational.TabIndex = 47;
+            // 
+            // textBoxSearchByNamePinyin
+            // 
+            this.textBoxSearchByNamePinyin.Location = new System.Drawing.Point(94, 15);
+            this.textBoxSearchByNamePinyin.Name = "textBoxSearchByNamePinyin";
+            this.textBoxSearchByNamePinyin.Size = new System.Drawing.Size(149, 21);
+            this.textBoxSearchByNamePinyin.TabIndex = 48;
+            this.textBoxSearchByNamePinyin.TextChanged += new System.EventHandler(this.textBoxSearchByNamePinyin_TextChanged);
+            // 
+            // buttonMaxHaogan
+            // 
+            this.buttonMaxHaogan.Location = new System.Drawing.Point(688, 253);
+            this.buttonMaxHaogan.Name = "buttonMaxHaogan";
+            this.buttonMaxHaogan.Size = new System.Drawing.Size(75, 23);
+            this.buttonMaxHaogan.TabIndex = 49;
+            this.buttonMaxHaogan.Text = "Max";
+            this.buttonMaxHaogan.UseVisualStyleBackColor = true;
+            this.buttonMaxHaogan.Click += new System.EventHandler(this.buttonMaxHaogan_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1437, 991);
+            this.Controls.Add(this.buttonMaxHaogan);
+            this.Controls.Add(this.textBoxSearchByNamePinyin);
+            this.Controls.Add(this.textBoxStatusRational);
+            this.Controls.Add(this.textBoxStatusMood);
+            this.Controls.Add(this.buttonMaxPalamK);
             this.Controls.Add(this.buttonUpdatePalam);
             this.Controls.Add(this.textBoxPalamSubAddr);
             this.Controls.Add(this.labelPalam);
@@ -559,6 +610,11 @@ namespace era_tw_trainer
         private System.Windows.Forms.Label labelPalam;
         private System.Windows.Forms.TextBox textBoxPalamSubAddr;
         private System.Windows.Forms.Button buttonUpdatePalam;
+        private System.Windows.Forms.Button buttonMaxPalamK;
+        private System.Windows.Forms.TextBox textBoxStatusMood;
+        private System.Windows.Forms.TextBox textBoxStatusRational;
+        private System.Windows.Forms.TextBox textBoxSearchByNamePinyin;
+        private System.Windows.Forms.Button buttonMaxHaogan;
     }
 }
 

@@ -20,3 +20,7 @@ namespace era_tw_trainer
         }
     }
 }
+
+
+
+// TODO: 1. CVBAM values 2. max haogan etc 3. money / coin 4. items? 5. toon filtering

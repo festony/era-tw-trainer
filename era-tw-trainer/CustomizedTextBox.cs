@@ -19,9 +19,9 @@ namespace era_tw_trainer
         public CustomizedTextBox(String name, Trainer trainer, GameToon toon, AreaIndexes index, int field)
         {
             Name = name;
-            Trace.WriteLine("-bubububu ---------");
+            //Trace.WriteLine("-bubububu ---------");
             value = trainer.readToonProp(toon, index, field);
-            Trace.WriteLine("-bubububu --xxxx------- " + value);
+            //Trace.WriteLine("-bubububu --xxxx------- " + value);
             this.trainer = trainer;
             this.toon = toon;
             this.index = index;

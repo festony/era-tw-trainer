@@ -71,6 +71,9 @@ namespace era_tw_trainer
             this.textBoxMaxSpirit = new System.Windows.Forms.TextBox();
             this.labelSlash5 = new System.Windows.Forms.Label();
             this.textBoxSpirit = new System.Windows.Forms.TextBox();
+            this.labelPalam = new System.Windows.Forms.Label();
+            this.textBoxPalamSubAddr = new System.Windows.Forms.TextBox();
+            this.buttonUpdatePalam = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -426,11 +429,40 @@ namespace era_tw_trainer
             this.textBoxSpirit.Size = new System.Drawing.Size(134, 21);
             this.textBoxSpirit.TabIndex = 39;
             // 
+            // labelPalam
+            // 
+            this.labelPalam.AutoSize = true;
+            this.labelPalam.Location = new System.Drawing.Point(794, 198);
+            this.labelPalam.Name = "labelPalam";
+            this.labelPalam.Size = new System.Drawing.Size(35, 12);
+            this.labelPalam.TabIndex = 42;
+            this.labelPalam.Text = "Palam";
+            // 
+            // textBoxPalamSubAddr
+            // 
+            this.textBoxPalamSubAddr.Location = new System.Drawing.Point(835, 195);
+            this.textBoxPalamSubAddr.Name = "textBoxPalamSubAddr";
+            this.textBoxPalamSubAddr.ReadOnly = true;
+            this.textBoxPalamSubAddr.Size = new System.Drawing.Size(314, 21);
+            this.textBoxPalamSubAddr.TabIndex = 43;
+            // 
+            // buttonUpdatePalam
+            // 
+            this.buttonUpdatePalam.Location = new System.Drawing.Point(1208, 193);
+            this.buttonUpdatePalam.Name = "buttonUpdatePalam";
+            this.buttonUpdatePalam.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdatePalam.TabIndex = 44;
+            this.buttonUpdatePalam.Text = "Update";
+            this.buttonUpdatePalam.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1416, 991);
+            this.ClientSize = new System.Drawing.Size(1437, 991);
+            this.Controls.Add(this.buttonUpdatePalam);
+            this.Controls.Add(this.textBoxPalamSubAddr);
+            this.Controls.Add(this.labelPalam);
             this.Controls.Add(this.textBoxMaxSpirit);
             this.Controls.Add(this.labelSlash5);
             this.Controls.Add(this.textBoxSpirit);
@@ -524,6 +556,9 @@ namespace era_tw_trainer
         private System.Windows.Forms.TextBox textBoxMaxSpirit;
         private System.Windows.Forms.Label labelSlash5;
         private System.Windows.Forms.TextBox textBoxSpirit;
+        private System.Windows.Forms.Label labelPalam;
+        private System.Windows.Forms.TextBox textBoxPalamSubAddr;
+        private System.Windows.Forms.Button buttonUpdatePalam;
     }
 }
 

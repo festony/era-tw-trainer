@@ -19,7 +19,7 @@ namespace era_tw_trainer.TrainerRelated
         public static int FEATURES_INDEX = 3;
         public static int EXPERIENCES_INDEX = 4;
         public static int KE_YIN_INDEX = 5;
-        public static int TEMP_LEVELS_INDEX = 6;
+        public static int PALAM_INDEX = 6;
         public static int HAO_GAN_INDEX = 9;
 
 
@@ -61,9 +61,9 @@ namespace era_tw_trainer.TrainerRelated
             return this.subAddrs[KE_YIN_INDEX];
         }
 
-        public IntPtr getTempLevelsAreaBaseAddr()
+        public IntPtr getPalamAreaBaseAddr()
         {
-            return this.subAddrs[TEMP_LEVELS_INDEX];
+            return this.subAddrs[PALAM_INDEX];
         }
 
         public IntPtr getHaoGanAreaBaseAddr()

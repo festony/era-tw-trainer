@@ -69,6 +69,7 @@ namespace era_tw_trainer
             textBoxHaoGanSubAddr.Text = toon.getHaoGanAreaBaseAddr().ToInt64().ToString("X");
             textBoxSkillsSubAddr.Text = toon.getSkillsAreaBaseAddr().ToInt64().ToString("X");
             textBoxFeatsSubAddr.Text = toon.getFeaturesAreaBaseAddr().ToInt64().ToString("X");
+            textBoxPalamSubAddr.Text = toon.getPalamAreaBaseAddr().ToInt64().ToString("X");
 
 
             textBoxName.Text = toon.name;
@@ -321,6 +322,9 @@ namespace era_tw_trainer
                 i++;
             }
             //Trace.WriteLine("------fdsfs --- " + textBoxFeatsSubAddr.Location.Y);
+
+
+
         }
 
         private void listBoxToons_SelectedIndexChanged(object sender, EventArgs e)

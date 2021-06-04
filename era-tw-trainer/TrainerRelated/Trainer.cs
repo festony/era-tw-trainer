@@ -58,14 +58,14 @@ namespace era_tw_trainer
                 return BAD_RESULT_FLAG;
             }
 
-            if (baseAddr.ToInt64() < minAddr.ToInt64() || baseAddr.ToInt64() + 8 > maxAddr.ToInt64())
+            if (((ulong)baseAddr.ToInt64()) < ((ulong)minAddr.ToInt64()) || ((ulong)baseAddr.ToInt64()) + 8 > ((ulong)maxAddr.ToInt64()))
             {
-                Trace.WriteLine("Address invalid");
+                Trace.WriteLine("getMarkFromBaseAddr - Address invalid - " + baseAddr.ToInt64().ToString("X"));
                 return BAD_RESULT_FLAG;
             }
 
             var test = readInt64(hGameP, baseAddr);
-            if (test < minAddr.ToInt64() || test > maxAddr.ToInt64())
+            if (((ulong)test) < ((ulong)minAddr.ToInt64()) || ((ulong)test) > ((ulong)maxAddr.ToInt64()))
             {
                 Trace.WriteLine("getMarkFromBaseAddr - val in [" + baseAddr.ToInt64().ToString("X") + "] is not valid addr " + test.ToString("X"));
                 return 0;
@@ -102,16 +102,16 @@ namespace era_tw_trainer
                 return false;
             }
 
-            if (baseAddr.ToInt64() < minAddr.ToInt64() || baseAddr.ToInt64() > maxAddr.ToInt64())
+            if (((ulong)baseAddr.ToInt64()) < ((ulong)minAddr.ToInt64()) || ((ulong)baseAddr.ToInt64()) > ((ulong)maxAddr.ToInt64()))
             {
-                Trace.WriteLine("Address invalid");
+                Trace.WriteLine("verifyIsPotentialMark54ToonBlock - Address invalid - " + baseAddr.ToInt64().ToString("X"));
                 return false;
             }
 
             var test = readInt64(hGameP, baseAddr);
-            if (test < minAddr.ToInt64() || test > maxAddr.ToInt64())
+            if (((ulong)test) < ((ulong)minAddr.ToInt64()) || ((ulong)test) > ((ulong)maxAddr.ToInt64()))
             {
-                Trace.WriteLine("val in [base addr] is not valid addr");
+                Trace.WriteLine("verifyIsPotentialMark54ToonBlock - val in [base addr] is not valid addr");
                 return false;
             }
 
@@ -128,9 +128,9 @@ namespace era_tw_trainer
             for (int i = 0; i < 10; i++)
             {
                 test = readInt64(hGameP, baseAddr + 8 * (2 + i));
-                if (test < minAddr.ToInt64() || test > maxAddr.ToInt64())
+                if (((ulong)test) < ((ulong)minAddr.ToInt64()) || ((ulong)test) > ((ulong)maxAddr.ToInt64()))
                 {
-                    Trace.WriteLine("Read address invalid");
+                    Trace.WriteLine("verifyIsPotentialMark54ToonBlock - Read address invalid - " + baseAddr.ToInt64().ToString("X"));
                     return false;
                 }
                 test = getMarkFromBaseAddr(new IntPtr(test));
@@ -166,16 +166,16 @@ namespace era_tw_trainer
                 return null;
             }
 
-            if (baseAddr.ToInt64() < minAddr.ToInt64() || baseAddr.ToInt64() > maxAddr.ToInt64())
+            if (((ulong)baseAddr.ToInt64()) < ((ulong)minAddr.ToInt64()) || ((ulong)baseAddr.ToInt64()) > ((ulong)maxAddr.ToInt64()))
             {
-                Trace.WriteLine("Address invalid");
+                Trace.WriteLine("tryConstructGameToonFromPotentialMark54ToonBlock - Address invalid - " + baseAddr.ToInt64() + " [ " + minAddr.ToInt64() + " ] <-> [ " + maxAddr.ToInt64() + "]");
                 return null;
             }
 
             var test = readInt64(hGameP, baseAddr);
-            if (test < minAddr.ToInt64() || test > maxAddr.ToInt64())
+            if (((ulong)test) < ((ulong)minAddr.ToInt64()) || ((ulong)test) > ((ulong)maxAddr.ToInt64()))
             {
-                Trace.WriteLine("val in [" + baseAddr.ToInt64().ToString("X") + "] is not valid addr " + test.ToString("X"));
+                Trace.WriteLine("tryConstructGameToonFromPotentialMark54ToonBlock - val in [" + baseAddr.ToInt64().ToString("X") + "] is not valid addr " + test.ToString("X"));
                 return null;
             }
 
@@ -193,11 +193,30 @@ namespace era_tw_trainer
             Trace.WriteLine("---x--- debug --- 0 --- " + baseAddr.ToInt64().ToString("X"));
             for (int i = 0; i < 20; i++)
             {
-                var subAddr = new IntPtr(readInt64(hGameP, baseAddr + 8 * (2 + i)));
-                Trace.WriteLine("---x--- debug --- 1 --- " + subAddr.ToInt64().ToString("X"));
-                if (subAddr.ToInt64() < minAddr.ToInt64() || subAddr.ToInt64() > maxAddr.ToInt64())
+                //Trace.WriteLine("---xxxxx--- debug --- 0 --- " + baseAddr.ToInt64().ToString("X") + " " + i);
+                //Trace.WriteLine("---xxxxx--- debug --- 0 --- " + (baseAddr + 8 * (2 + i)));
+                //Trace.WriteLine("---xxxxx--- debug --- 0 --- " + readInt64(hGameP, baseAddr + 8 * (2 + i)));
+                //Trace.WriteLine("---xxxxx--- debug --- 0 --- " + readInt64(hGameP, baseAddr + 8 * (2 + i)).ToString("X"));
+                IntPtr subAddr;
+                try
                 {
-                    Trace.WriteLine("Read address invalid");
+                    subAddr = new IntPtr(readInt64(hGameP, baseAddr + 8 * (2 + i)));
+                }
+                catch(OverflowException e)
+                {
+                    Trace.WriteLine("tryConstructGameToonFromPotentialMark54ToonBlock - Read too large value - " + readInt64(hGameP, baseAddr + 8 * (2 + i)).ToString("X"));
+                    if (i == 0)
+                    {
+                        // sometimes the first one is a strange large 8 bytes value
+                        continue;
+                    }
+                    return null;
+                }
+
+                Trace.WriteLine("---x--- debug --- 1 --- " + subAddr.ToInt64().ToString("X"));
+                if (((ulong)subAddr.ToInt64()) < ((ulong)minAddr.ToInt64()) || ((ulong)subAddr.ToInt64()) > ((ulong)maxAddr.ToInt64()))
+                {
+                    Trace.WriteLine("tryConstructGameToonFromPotentialMark54ToonBlock - Read address invalid - " + baseAddr.ToInt64().ToString("X"));
                     return null;
                 }
                 test = getMarkFromBaseAddr(subAddr);
@@ -243,14 +262,14 @@ namespace era_tw_trainer
                 return new IntPtr(BAD_RESULT_FLAG);
             }
 
-            if (baseAddr.ToInt64() < minAddr.ToInt64() || baseAddr.ToInt64() > maxAddr.ToInt64())
+            if (((ulong)baseAddr.ToInt64()) < ((ulong)minAddr.ToInt64()) || ((ulong)baseAddr.ToInt64()) > ((ulong)maxAddr.ToInt64()))
             {
-                Trace.WriteLine("Address invalid");
+                Trace.WriteLine("getNameAddrFromPotentialMark04NameBlock - Address invalid - " + baseAddr.ToInt64().ToString("X"));
                 return new IntPtr(BAD_RESULT_FLAG);
             }
 
             var test = readInt64(hGameP, baseAddr);
-            if (test < minAddr.ToInt64() || test > maxAddr.ToInt64())
+            if (((ulong)test) < ((ulong)minAddr.ToInt64()) || ((ulong)test) > ((ulong)maxAddr.ToInt64()))
             {
                 Trace.WriteLine("getNameAddrFromPotentialMark04NameBlock 1 - val in [" + baseAddr.ToInt64().ToString("X") + "] is not valid addr " + test.ToString("X"));
                 return new IntPtr(BAD_RESULT_FLAG);
@@ -298,17 +317,26 @@ namespace era_tw_trainer
                 found = true;
                 test = readInt64(hGameP, baseAddr + 16 + offset);
                 offset += 8;
-                if (test < minAddr.ToInt64() || test > maxAddr.ToInt64())
+                if (((ulong)test) < ((ulong)minAddr.ToInt64()) || ((ulong)test) > ((ulong)maxAddr.ToInt64()))
                 {
                     Trace.WriteLine("getNameAddrFromPotentialMark04NameBlock 2 - val in [" + (baseAddr + 16 + offset).ToInt64().ToString("X") + "] is not valid addr " + test.ToString("X"));
                     found = false;
                     continue;
                 }
 
-                baseAddr1 = new IntPtr(test);
+                try
+                {
+                    baseAddr1 = new IntPtr(test);
+                }
+                catch (OverflowException e)
+                {
+                    Trace.WriteLine("getNameAddrFromPotentialMark04NameBlock 2 - val in [" + (baseAddr + 16 + offset).ToInt64().ToString("X") + "] is not valid addr " + test.ToString("X"));
+                    found = false;
+                    continue;
+                }
 
                 test = readInt64(hGameP, baseAddr1);
-                if (test < minAddr.ToInt64() || test > maxAddr.ToInt64())
+                if (((ulong)test) < ((ulong)minAddr.ToInt64()) || ((ulong)test) > ((ulong)maxAddr.ToInt64()))
                 {
                     Trace.WriteLine("getNameAddrFromPotentialMark04NameBlock 3 - val in [" + baseAddr1.ToInt64().ToString("X") + "] is not valid addr " + test.ToString("X"));
                     found = false;
@@ -364,7 +392,7 @@ namespace era_tw_trainer
             {
                 IntPtr baseAddr04 = baseAddr54 - i * 8;
                 var test = getNameAddrFromPotentialMark04NameBlock(baseAddr04);
-                if (test.ToInt64() != BAD_RESULT_FLAG && test.ToInt64() >= minAddr.ToInt64() && test.ToInt64() <= maxAddr.ToInt64())
+                if (test.ToInt64() != BAD_RESULT_FLAG && ((ulong)test.ToInt64()) >= ((ulong)minAddr.ToInt64()) && ((ulong)test.ToInt64()) <= ((ulong)maxAddr.ToInt64()))
                 {
                     return test;
                 }
@@ -387,6 +415,7 @@ namespace era_tw_trainer
             IntPtr proc_max_address = sys_info.maximumApplicationAddress;
             minAddr = proc_min_address;
             maxAddr = proc_max_address;
+
             Trace.WriteLine("min addr - " + ((ulong)proc_min_address).ToString("X"));
             Trace.WriteLine("max addr - " + ((ulong)proc_max_address).ToString("X"));
 
@@ -404,10 +433,15 @@ namespace era_tw_trainer
             //Trace.WriteLine("---- debug 3");
             while ((ulong)addr < (ulong)proc_max_address)
             {
-                //Trace.WriteLine("---- debug 4");
+                //Trace.WriteLine("---- debug 4 " + addr.ToInt64().ToString("X") + " < " + proc_max_address.ToInt64().ToString("X") + " => + " + mem_basic_info.RegionSize.ToInt64().ToString("X") + "  ==== " + (((ulong)addr.ToInt64()) + ((ulong)mem_basic_info.RegionSize.ToInt64())));
                 VirtualQueryEx(hGameP, addr, out mem_basic_info, (uint)Marshal.SizeOf(typeof(MEMORY_BASIC_INFORMATION)));
 
-                //Trace.WriteLine("---- debug 5");
+                //Trace.WriteLine("---- debug 5" + "  ==== " + (((ulong)addr.ToInt64()) + ((ulong)mem_basic_info.RegionSize.ToInt64())) + "   " + mem_basic_info.RegionSize.ToInt64());
+                //addr = new IntPtr(((ulong)addr.ToInt64()) + ((ulong)mem_basic_info.RegionSize.ToInt64()));
+                if (((ulong)addr.ToInt64()) + ((ulong)mem_basic_info.RegionSize.ToInt64()) >= ((ulong)proc_max_address.ToInt64()) ||  mem_basic_info.RegionSize.ToInt64() < 0)
+                {
+                    break;
+                }
                 addr = new IntPtr(addr.ToInt64() + mem_basic_info.RegionSize.ToInt64());
                 if (((uint)(mem_basic_info.Protect) & (uint)(AllocationProtectEnum.PAGE_READWRITE)) > 0 && (ulong)(mem_basic_info.RegionSize) >= 0xCC8)
                 {
@@ -434,14 +468,14 @@ namespace era_tw_trainer
                     //Trace.WriteLine("mem_basic_info.RegionSize - " + ((ulong)mem_basic_info.RegionSize).ToString("X"));
                     //possibleBaseAddrAndBlockSizes[mem_basic_info.BaseAddress] = mem_basic_info.RegionSize;
 
-                    //Trace.WriteLine("---- debug 6");
+                    Trace.WriteLine("---- debug 6");
                     int bytesRead = 0;
                     ulong bufferSize = (ulong)(mem_basic_info.RegionSize);
                     byte[] buffer = new byte[bufferSize];
 
                     // read everything in the buffer above
                     bool r = ReadProcessMemory(hGameP, mem_basic_info.BaseAddress, buffer, (int)mem_basic_info.RegionSize, ref bytesRead);
-                    //Trace.WriteLine("---- debug 7 " + mem_basic_info);
+                    Trace.WriteLine("---- debug 7 " + mem_basic_info);
                     //Trace.WriteLine("---- debug 7 1 " + mem_basic_info.BaseAddress);
                     //Trace.WriteLine("---- debug 7 2 " + mem_basic_info.AllocationBase);
                     //Trace.WriteLine("---- debug 7 3 " + mem_basic_info.AllocationProtect);
@@ -474,7 +508,7 @@ namespace era_tw_trainer
                             && buffer[i + 7] == 0)
                         {
                             // potentially a match, need to verify
-                            //Trace.WriteLine("---- debug 7 x 2 ");
+                            Trace.WriteLine("---- debug 7 x 2 ");
                             var baseAddr54 = mem_basic_info.BaseAddress + i - 8;
                             //Trace.WriteLine("---- debug 7 x 3 " + baseAddr54);
                             //if (verifyIsPotentialMark54ToonBlock(baseAddr54))

@@ -79,6 +79,7 @@ namespace era_tw_trainer
             this.textBoxStatusRational = new System.Windows.Forms.TextBox();
             this.textBoxSearchByNamePinyin = new System.Windows.Forms.TextBox();
             this.buttonMaxHaogan = new System.Windows.Forms.Button();
+            this.buttonMaxMood = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -501,11 +502,21 @@ namespace era_tw_trainer
             this.buttonMaxHaogan.UseVisualStyleBackColor = true;
             this.buttonMaxHaogan.Click += new System.EventHandler(this.buttonMaxHaogan_Click);
             // 
+            // buttonMaxMood
+            // 
+            this.buttonMaxMood.Location = new System.Drawing.Point(607, 188);
+            this.buttonMaxMood.Name = "buttonMaxMood";
+            this.buttonMaxMood.Size = new System.Drawing.Size(75, 23);
+            this.buttonMaxMood.TabIndex = 50;
+            this.buttonMaxMood.Text = "Max Mood";
+            this.buttonMaxMood.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1437, 991);
+            this.Controls.Add(this.buttonMaxMood);
             this.Controls.Add(this.buttonMaxHaogan);
             this.Controls.Add(this.textBoxSearchByNamePinyin);
             this.Controls.Add(this.textBoxStatusRational);
@@ -615,6 +626,7 @@ namespace era_tw_trainer
         private System.Windows.Forms.TextBox textBoxStatusRational;
         private System.Windows.Forms.TextBox textBoxSearchByNamePinyin;
         private System.Windows.Forms.Button buttonMaxHaogan;
+        private System.Windows.Forms.Button buttonMaxMood;
     }
 }
 

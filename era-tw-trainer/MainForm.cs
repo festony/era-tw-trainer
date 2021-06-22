@@ -358,7 +358,13 @@ namespace era_tw_trainer
             buttonMaxPalamK.Click += (o, e) => bumpPalamKFieldsList.ForEach(t => { t.Text = "5000000"; t.updateVal(); });
             buttonUpdatePalam.Click += (o, e) => textBoxPalamFieldsList.ForEach(t => t.updateVal());
 
-
+            buttonMaxMood.Click += (o, e) =>
+            {
+                textBoxStatusMood.Text = "100000";
+                textBoxStatusRational.Text = "0";
+                trainer.writeToonProp64(toon, AreaIndexes.STATUS_AREA, (int)StatusAreaFields.情绪, int.Parse(textBoxStatusMood.Text));
+                trainer.writeToonProp64(toon, AreaIndexes.STATUS_AREA, (int)StatusAreaFields.理性, int.Parse(textBoxStatusRational.Text));
+            };
         }
 
         private void listBoxToons_SelectedIndexChanged(object sender, EventArgs e)
@@ -420,6 +426,7 @@ namespace era_tw_trainer
             if (string.IsNullOrWhiteSpace(textBoxSearchByNamePinyin.Text))
             {
                 clearSearchRes();
+                return;
             }
             var indexes = trainer.findNameMatch(textBoxSearchByNamePinyin.Text);
             updateSearchResult(indexes);

@@ -51,6 +51,20 @@ namespace era_tw_trainer
             }
         }
 
+        private void resetSomeButtons()
+        {
+            this.Controls.Remove(buttonBumpGeneralSkills);
+            this.Controls.Remove(buttonBumpLiveSkills);
+            this.Controls.Remove(buttonBumpFeelSkills);
+            this.Controls.Remove(buttonBumpHSkills);
+            this.Controls.Remove(buttonBumpXPSkills);
+            this.Controls.Remove(buttonBumpAddictSkills);
+            this.Controls.Remove(buttonUpdateSkills);
+            this.Controls.Remove(buttonMaxPalamK);
+            this.Controls.Remove(buttonUpdatePalam);
+            this.Controls.Remove(buttonMaxMood);
+        }
+
         private void loadToon()
         {
             int lineHeight = 28;
@@ -478,11 +492,17 @@ namespace era_tw_trainer
         }
 
         // TODO:
+        // *** refactor MainForm - have a set of buttons etc for each different toon, add / remove when switch toons
+
         // 1. ren sheng days
         // 2. cum amount
         // fix maxk issue (update multiple) (as well as other such buttons)
         // seriously, should setup some value lock mechanism
+        // auto refresh when not on focus
         // customize max* buttons - e.g. set 2nd and 5nd to 120
-
+        // add DUAN XIU enum
+        // hao gan / xin lai - add buttons like zero, stage 1, stage 2 etc (249 / 699 / 10000)
+        // skip (hide) disabled toons
+        // continue check more feats??
     }
 }

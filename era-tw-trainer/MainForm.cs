@@ -476,5 +476,13 @@ namespace era_tw_trainer
                 buttonUpdateHaoGan.PerformClick();
             }
         }
+
+        // TODO:
+        // 1. ren sheng days
+        // 2. cum amount
+        // fix maxk issue (update multiple) (as well as other such buttons)
+        // seriously, should setup some value lock mechanism
+        // customize max* buttons - e.g. set 2nd and 5nd to 120
+
     }
 }

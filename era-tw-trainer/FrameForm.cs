@@ -56,35 +56,12 @@ namespace era_tw_trainer
         {
             trainer.getGameProcessHandle();
             trainer.initScanMem();
-            //for (int i = 0; i < trainer.names.Count; i++)
-            //{
-            //    var text = trainer.toons[i].name;
-            //    if (trainer.player == trainer.toons[i])
-            //    {
-            //        text = "***" + text;
-            //    }
-            //    text += "  |" + i;
-
-            //    toonNames.Add(text);
-            //}
-
-            //clearSearchRes();
             updateToonNameList(checkBoxShowUnavailableToons.Checked);
         }
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
             initTrainer();
-            //var testControls = createPanelForToon(trainer.toons[8]);
-
-            // Remove these: now do lazy loading
-            //for(int i=0; i<trainer.toons.Count; i++)
-            //{
-            //    var controls = createPanelForToon(trainer.toons[i]);
-            //    var lockValueCheckBoxes = controls.Where(c => c is LockValueCheckBox).Select(c => (LockValueCheckBox) c).ToList();
-            //    toonPanels[i] = controls;
-            //    lockValueCheckBoxLists[i] = lockValueCheckBoxes;
-            //}
         }
 
         private void loadPanelForToon(int index)

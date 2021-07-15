@@ -39,6 +39,7 @@ namespace era_tw_trainer.TrainerRelated
     {
         体力 = 0x10,
         气力 = 0x18,
+        射精 = 0x20,
         精力 = 0x40,
         TPS = 0x50,
         酒气 = 0x88,
@@ -70,7 +71,8 @@ namespace era_tw_trainer.TrainerRelated
     {
         M = 0x88,
         S = 0x90,
-        百合 = 0x98
+        百合 = 0x98,
+        断袖 = 0xA0
     }
 
     enum SkillsAreaAddictFields
@@ -78,6 +80,7 @@ namespace era_tw_trainer.TrainerRelated
         自慰 = 0x100,
         精液 = 0x108,
         百合 = 0x110,
+        断袖 = 0x118,
         腔射 = 0x120,
         肛射 = 0x128
     }
@@ -321,7 +324,10 @@ namespace era_tw_trainer.TrainerRelated
     enum HaoGanAreaFields
     {
         好感 = 0x20,
-        依赖 = 0x30
+        依赖 = 0x30,
+        登场 = 0x0B50, // 1: 未登场
+        妊娠 = 0x1C48
+            // 0x1028: 腔注入总量
     }
 
     enum PalamAreaFields

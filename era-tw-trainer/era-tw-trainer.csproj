@@ -80,10 +80,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomizedButton.cs">
+    <Compile Include="FrameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrameForm.Designer.cs">
+      <DependentUpon>FrameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ICustomizedControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomizedTextBox.cs">
+    <Compile Include="LockValueCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -99,6 +105,12 @@
     <Compile Include="TrainerRelated\GameToon.cs" />
     <Compile Include="TrainerRelated\Trainer.cs" />
     <Compile Include="TrainerRelated\Win32Stuff64bit.cs" />
+    <Compile Include="UpdateButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="FrameForm.resx">
+      <DependentUpon>FrameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

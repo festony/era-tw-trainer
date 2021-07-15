@@ -16,7 +16,7 @@ namespace era_tw_trainer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new FrameForm());
         }
     }
 }

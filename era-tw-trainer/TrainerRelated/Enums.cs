@@ -20,19 +20,19 @@ namespace era_tw_trainer.TrainerRelated
         HAO_GAN_AREA = 9
     }
 
-    enum ValueRanges
-    {
-        RANGE_0_TO_1,
-        RANGE_NON_NEG,
-        RANGE_0_TO_100,
-        RANGE_0_TO_6,
-        RANGE_NEG1_TO_1,
-        RANGE_NEG1_TO_2,
-        RANGE_NEG1_TO_3,
-        RANGE_NEG2_TO_2,
-        RANGE_NEG2_TO_3,
-        RANGE_1_TO_3
-    }
+    //enum ValueRanges
+    //{
+    //    RANGE_0_TO_1,
+    //    RANGE_NON_NEG,
+    //    RANGE_0_TO_100,
+    //    RANGE_0_TO_6,
+    //    RANGE_NEG1_TO_1,
+    //    RANGE_NEG1_TO_2,
+    //    RANGE_NEG1_TO_3,
+    //    RANGE_NEG2_TO_2,
+    //    RANGE_NEG2_TO_3,
+    //    RANGE_1_TO_3
+    //}
 
     // Same with MaxStatus
     enum StatusAreaFields
@@ -244,16 +244,16 @@ namespace era_tw_trainer.TrainerRelated
         h月光浴 = 0x440,
         h治疗 = 0x448,
         h鼓舞 = 0x450,
-        h大胃王 = 0x458,
+        //h大胃王 = 0x458,
         h不可思议的根 = 0x460,
         //= 0x468,
         //= 0x470,
-        h狂气 = 0x478,
-        风骚 = 0x480,
+        //狂气 = 0x478,
+        h风骚 = 0x480,
         动物耳 = 0x488,
         h禁断的知识 = 0x490,
-        h人气 = 0x498,
-        具现 = 0x4a0,
+        人气 = 0x498,
+        h具现 = 0x4a0,
         //= 0x4a8,
         //= 0x4b0,
         h母乳体质 = 0x4b8,
@@ -268,8 +268,8 @@ namespace era_tw_trainer.TrainerRelated
         h内裤走私者 = 0x500,
         h居场所查知 = 0x508,
         h污部屋查知 = 0x510,
-        h乐器知识 = 0x518,
-        h音感 = 0x520,
+        音乐知识 = 0x518,
+        音感 = 0x520,
         h水栖 = 0x528,
         h水精 = 0x530,
         //h种族？？ = 0x538,
@@ -296,19 +296,30 @@ namespace era_tw_trainer.TrainerRelated
         //= 0x5e0,
         //= 0x5e8,
         //= 0x5f0,
-        h妄想的产物 = 0x5f8,
-        h妖精 = 0x600,
-        h蓬莱人 = 0x608,
-        h非生物 = 0x610,
-        //= 0x618,
-        h人类 = 0x620,
-        h鬼 = 0x628,
-        h付丧神 = 0x630,
-        h天狗 = 0x638,
+        //h妄想的产物 = 0x5f8,
+        //h妖精 = 0x600,
+        //h蓬莱人 = 0x608,
+        //h非生物 = 0x610,
+        //h神灵 = 0x618,
+        //h人类 = 0x620,
+        //h鬼 = 0x628,
+        //h付丧神 = 0x630,
+        //h天狗 = 0x638,
         h人妻 = 0x640,
         //= 0x648,
         //= 0x650,
-        J大小 = 0x7E0
+        J大小 = 0x7E0,
+        //= 0x810 - 让天狗怀孕
+        //= 0x818 - 让蓬莱怀孕
+        //= 0x820 - 让付丧神怀孕
+        //= 0x828 - 让鬼怀孕
+        //= 0x830 - 让巫女怀孕
+        //= 0x838 - 让妖精怀孕
+        //= 0x840 - 让妖怪怀孕
+        //= 0x848 - 让神灵怀孕
+        //= 0x850 - 万能孕
+        万能孕 = 0x850
+
     }
 
     enum KeYinAreaFields

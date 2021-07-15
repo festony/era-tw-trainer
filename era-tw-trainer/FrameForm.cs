@@ -436,9 +436,233 @@ namespace era_tw_trainer
             controls.Add(lockValueCheckBoxPalamK);
             // Palam Area
 
+            // Skills Area
+            // Skills sub address
+            TextBox textBoxSkillsSubAddr = new TextBox();
+            textBoxSkillsSubAddr.Location = new Point(labelSkills.Location.X + 47, labelSkills.Location.Y);
+            textBoxSkillsSubAddr.Name = "textBoxHaoGanSubAddr";
+            textBoxSkillsSubAddr.ReadOnly = true;
+            textBoxSkillsSubAddr.Size = new Size(80, 21);
+            //textBoxSkillsSubAddr.TabIndex = 22;
+
+            textBoxSkillsSubAddr.Text = toon.getSkillsAreaBaseAddr().ToInt64().ToString("X");
+            controls.Add(textBoxSkillsSubAddr);
+
+            width = 60;
+            height = 21;
+            deltaX = width + 6;
+            deltaY = height + 8;
+
+            // Buttons and textboxes
+            UpdateButton updateButtonSkills = new UpdateButton("updateButton_Skills");
+            updateButtonSkills.Size = new Size(width, height);
+            updateButtonSkills.Location = new Point(textBoxSkillsSubAddr.Location.X, textBoxSkillsSubAddr.Location.Y + deltaY);
+            updateButtonSkills.Text = "Update";
+            controls.Add(updateButtonSkills);
+
+            UpdateButton updateButtonBumpServe = new UpdateButton("updateButton_BumpServe");
+            updateButtonBumpServe.Size = new Size(width, height);
+            updateButtonBumpServe.Location = new Point(textBoxSkillsSubAddr.Location.X, textBoxSkillsSubAddr.Location.Y + deltaY * 2);
+            updateButtonBumpServe.Text = "Serv";
+            controls.Add(updateButtonBumpServe);
+
+            x = textBoxSkillsSubAddr.Location.X + 86;
+            y = textBoxSkillsSubAddr.Location.Y;
+
+            UpdateButton updateButtonBumpGeneralSkills = new UpdateButton("updateButton_BumpGeneralSkills");
+            updateButtonBumpGeneralSkills.Size = new Size(width, height);
+            updateButtonBumpGeneralSkills.Location = new Point(x, y);
+            x += deltaX;
+            updateButtonBumpGeneralSkills.Text = "Bump";
+            controls.Add(updateButtonBumpGeneralSkills);
+
+            UpdateButton updateButtonBumpLiveSkills = new UpdateButton("updateButton_BumpLiveSkills");
+            updateButtonBumpLiveSkills.Size = new Size(width, height);
+            updateButtonBumpLiveSkills.Location = new Point(x, y);
+            x += deltaX;
+            updateButtonBumpLiveSkills.Text = "Bump";
+            controls.Add(updateButtonBumpLiveSkills);
+
+            UpdateButton updateButtonBumpFeelSkills = new UpdateButton("updateButton_BumpFeelSkills");
+            updateButtonBumpFeelSkills.Size = new Size(width, height);
+            updateButtonBumpFeelSkills.Location = new Point(x, y);
+            x += deltaX;
+            updateButtonBumpFeelSkills.Text = "Bump";
+            controls.Add(updateButtonBumpFeelSkills);
+
+            UpdateButton updateButtonBumpHSkills = new UpdateButton("updateButton_BumpHSkills");
+            updateButtonBumpHSkills.Size = new Size(width, height);
+            updateButtonBumpHSkills.Location = new Point(x, y);
+            x += deltaX;
+            updateButtonBumpHSkills.Text = "Bump";
+            controls.Add(updateButtonBumpHSkills);
+
+            UpdateButton updateButtonBumpXpSkills = new UpdateButton("updateButton_BumpXpSkills");
+            updateButtonBumpXpSkills.Size = new Size(width, height);
+            updateButtonBumpXpSkills.Location = new Point(x, y);
+            x += deltaX;
+            updateButtonBumpXpSkills.Text = "Bump";
+            controls.Add(updateButtonBumpXpSkills);
+
+            UpdateButton updateButtonBumpAddictSkills = new UpdateButton("updateButton_BumpAddictSkills");
+            updateButtonBumpAddictSkills.Size = new Size(width, height);
+            updateButtonBumpAddictSkills.Location = new Point(x, y);
+            x += deltaX;
+            updateButtonBumpAddictSkills.Text = "Bump";
+            controls.Add(updateButtonBumpAddictSkills);
 
 
+            x = updateButtonBumpGeneralSkills.Location.X;
+            y = updateButtonBumpGeneralSkills.Location.Y + deltaY;
 
+            foreach (var field in new SkillsAreaGeneralFields[] { SkillsAreaGeneralFields.亲密, SkillsAreaGeneralFields.从顺, SkillsAreaGeneralFields.欲望, SkillsAreaGeneralFields.技巧, SkillsAreaGeneralFields.侍奉, SkillsAreaGeneralFields.露出 })
+            {
+                CustomizedTextBox textBox = new CustomizedTextBox("customizedTextBox_" + field.ToString(), trainer, toon, AreaIndexes.SKILLS_AREA, (int)field);
+                textBox.Location = new Point(x, y);
+                y += deltaY;
+                textBox.Size = new Size(width, height);
+                //textBox.TabIndex = 22;
+
+                textBox.readVal();
+                controls.Add(textBox);
+                updateButtonSkills.addTextBox(textBox);
+                updateButtonBumpGeneralSkills.addTextBox(textBox, "120");
+                if (field == SkillsAreaGeneralFields.从顺 || field == SkillsAreaGeneralFields.侍奉)
+                {
+                    updateButtonBumpServe.addTextBox(textBox, "120");
+                }
+            }
+
+            x = updateButtonBumpLiveSkills.Location.X;
+            y = updateButtonBumpLiveSkills.Location.Y + deltaY;
+
+            foreach (var field in new SkillsAreaLiveSkillsFields[] { SkillsAreaLiveSkillsFields.教养, SkillsAreaLiveSkillsFields.话术, SkillsAreaLiveSkillsFields.战斗, SkillsAreaLiveSkillsFields.清扫, SkillsAreaLiveSkillsFields.料理, SkillsAreaLiveSkillsFields.音乐 })
+            {
+                CustomizedTextBox textBox = new CustomizedTextBox("customizedTextBox_" + field.ToString(), trainer, toon, AreaIndexes.SKILLS_AREA, (int)field);
+                textBox.Location = new Point(x, y);
+                y += deltaY;
+                textBox.Size = new Size(width, height);
+                //textBox.TabIndex = 22;
+
+                textBox.readVal();
+                controls.Add(textBox);
+                updateButtonSkills.addTextBox(textBox);
+                updateButtonBumpLiveSkills.addTextBox(textBox, "6");
+            }
+
+            x = updateButtonBumpFeelSkills.Location.X;
+            y = updateButtonBumpFeelSkills.Location.Y + deltaY;
+
+            foreach (var field in new SkillsAreaFeelFields[] { SkillsAreaFeelFields.C, SkillsAreaFeelFields.V, SkillsAreaFeelFields.A, SkillsAreaFeelFields.B, SkillsAreaFeelFields.M })
+            {
+                CustomizedTextBox textBox = new CustomizedTextBox("customizedTextBox_" + field.ToString(), trainer, toon, AreaIndexes.SKILLS_AREA, (int)field);
+                textBox.Location = new Point(x, y);
+                y += deltaY;
+                textBox.Size = new Size(width, height);
+                //textBox.TabIndex = 22;
+
+                textBox.readVal();
+                controls.Add(textBox);
+                updateButtonSkills.addTextBox(textBox);
+                updateButtonBumpFeelSkills.addTextBox(textBox, "120");
+            }
+
+            x = updateButtonBumpHSkills.Location.X;
+            y = updateButtonBumpHSkills.Location.Y + deltaY;
+
+            foreach (var field in new SkillsAreaHSkillsFields[] { SkillsAreaHSkillsFields.指, SkillsAreaHSkillsFields.腔, SkillsAreaHSkillsFields.A, SkillsAreaHSkillsFields.胸, SkillsAreaHSkillsFields.舌, SkillsAreaHSkillsFields.腰 })
+            {
+                CustomizedTextBox textBox = new CustomizedTextBox("customizedTextBox_" + field.ToString(), trainer, toon, AreaIndexes.SKILLS_AREA, (int)field);
+                textBox.Location = new Point(x, y);
+                y += deltaY;
+                textBox.Size = new Size(width, height);
+                //textBox.TabIndex = 22;
+
+                textBox.readVal();
+                controls.Add(textBox);
+                updateButtonSkills.addTextBox(textBox);
+                updateButtonBumpHSkills.addTextBox(textBox, "6");
+            }
+
+            x = updateButtonBumpXpSkills.Location.X;
+            y = updateButtonBumpXpSkills.Location.Y + deltaY;
+
+            foreach (var field in new SkillsAreaXPFields[] { SkillsAreaXPFields.M, SkillsAreaXPFields.S, SkillsAreaXPFields.百合, SkillsAreaXPFields.断袖 })
+            {
+                CustomizedTextBox textBox = new CustomizedTextBox("customizedTextBox_" + field.ToString(), trainer, toon, AreaIndexes.SKILLS_AREA, (int)field);
+                textBox.Location = new Point(x, y);
+                y += deltaY;
+                textBox.Size = new Size(width, height);
+                //textBox.TabIndex = 22;
+
+                textBox.readVal();
+                controls.Add(textBox);
+                updateButtonSkills.addTextBox(textBox);
+                updateButtonBumpXpSkills.addTextBox(textBox, "120");
+            }
+
+            x = updateButtonBumpAddictSkills.Location.X;
+            y = updateButtonBumpAddictSkills.Location.Y + deltaY;
+
+            foreach (var field in new SkillsAreaAddictFields[] { SkillsAreaAddictFields.自慰, SkillsAreaAddictFields.精液, SkillsAreaAddictFields.百合, SkillsAreaAddictFields.断袖, SkillsAreaAddictFields.腔射, SkillsAreaAddictFields.肛射 })
+            {
+                CustomizedTextBox textBox = new CustomizedTextBox("customizedTextBox_" + field.ToString(), trainer, toon, AreaIndexes.SKILLS_AREA, (int)field);
+                textBox.Location = new Point(x, y);
+                y += deltaY;
+                textBox.Size = new Size(width, height);
+                //textBox.TabIndex = 22;
+
+                textBox.readVal();
+                controls.Add(textBox);
+                updateButtonSkills.addTextBox(textBox);
+                updateButtonBumpAddictSkills.addTextBox(textBox, "120");
+            }
+            // Skills Area End
+
+            // Feats Area
+            // Feats sub address
+            TextBox textBoxFeaturesSubAddr = new TextBox();
+            textBoxFeaturesSubAddr.Location = new Point(labelFeatures.Location.X + 47, labelFeatures.Location.Y);
+            textBoxFeaturesSubAddr.Name = "textBoxStatusSubAddr";
+            textBoxFeaturesSubAddr.ReadOnly = true;
+            textBoxFeaturesSubAddr.Size = new Size(80, 21);
+            //textBoxFeatsSubAddr.TabIndex = 22;
+
+            textBoxFeaturesSubAddr.Text = toon.getFeaturesAreaBaseAddr().ToInt64().ToString("X");
+            controls.Add(textBoxFeaturesSubAddr);
+
+
+            width = 100;
+            height = 21;
+            deltaX = width + 6;
+            deltaY = height + 8;
+            x = textBoxPalamSubAddr.Location.X + 86;
+            y = textBoxPalamSubAddr.Location.Y;
+
+            int H = 15;
+
+            i = 0;
+            foreach (FeaturesAreaFields field in Enum.GetValues(typeof(FeaturesAreaFields)))
+            {
+                Dictionary<int, String> textDict = new Dictionary<int, string>();
+                var range = FeatureFieldsValueRanges.getValueRange(field);
+                for (int j = range[0]; j <= range[1]; j++)
+                {
+                    textDict[j] = field.ToString() + ":" + j;
+                }
+                var featButton = new CustomizedButton("customizedButtonFeat_" + i, textDict, trainer, toon, AreaIndexes.FEATURES_AREA, (int)field, range[0], range[1]);
+                var c = i / H;
+                var r = i % H;
+
+
+                featButton.Location = new Point(textBoxFeaturesSubAddr.Location.X + deltaX * c, textBoxFeaturesSubAddr.Location.Y + deltaY * (r + 1));
+                featButton.Size = new Size(width, height);
+                featButton.UseVisualStyleBackColor = true;
+                //textBox.TabIndex = 300 + i;
+                featButton.readVal();
+                controls.Add(featButton);
+                i++;
+            }
 
 
 
@@ -478,10 +702,8 @@ namespace era_tw_trainer
             showToon(currToon);
         }
 
-        // TODO
         private void readAllValsForToon(int index)
         {
-            // TODO: Exclude locked values!
             if (index < 0)
             {
                 return;
@@ -585,7 +807,6 @@ namespace era_tw_trainer
 
 
         // TODO:
-        // 1. can do lazy loading for each toon
 
     }
 }

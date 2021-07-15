@@ -34,15 +34,14 @@ namespace era_tw_trainer
             this.textBoxSearchByNamePinyin = new System.Windows.Forms.TextBox();
             this.listBoxToons = new System.Windows.Forms.ListBox();
             this.labelName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelHaoGan = new System.Windows.Forms.Label();
             this.labelKeYin = new System.Windows.Forms.Label();
             this.timerForLockLoop = new System.Windows.Forms.Timer(this.components);
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.labelStatus = new System.Windows.Forms.Label();
             this.labelPalam = new System.Windows.Forms.Label();
             this.labelSkills = new System.Windows.Forms.Label();
             this.checkBoxShowUnavailableToons = new System.Windows.Forms.CheckBox();
+            this.labelFeatures = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonScan
@@ -71,7 +70,7 @@ namespace era_tw_trainer
             this.listBoxToons.ItemHeight = 12;
             this.listBoxToons.Location = new System.Drawing.Point(13, 69);
             this.listBoxToons.Name = "listBoxToons";
-            this.listBoxToons.Size = new System.Drawing.Size(150, 916);
+            this.listBoxToons.Size = new System.Drawing.Size(150, 748);
             this.listBoxToons.TabIndex = 50;
             this.listBoxToons.SelectedIndexChanged += new System.EventHandler(this.listBoxToons_SelectedIndexChanged);
             // 
@@ -83,13 +82,6 @@ namespace era_tw_trainer
             this.labelName.Size = new System.Drawing.Size(35, 12);
             this.labelName.TabIndex = 51;
             this.labelName.Text = "Name:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(1216, 799);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 21);
-            this.textBox1.TabIndex = 52;
             // 
             // labelHaoGan
             // 
@@ -114,16 +106,6 @@ namespace era_tw_trainer
             this.timerForLockLoop.Enabled = true;
             this.timerForLockLoop.Interval = 200;
             this.timerForLockLoop.Tick += new System.EventHandler(this.timerForLockLoop_Tick);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(1197, 881);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(78, 16);
-            this.checkBox1.TabIndex = 55;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // labelStatus
             // 
@@ -163,19 +145,27 @@ namespace era_tw_trainer
             this.checkBoxShowUnavailableToons.UseVisualStyleBackColor = true;
             this.checkBoxShowUnavailableToons.CheckedChanged += new System.EventHandler(this.checkBoxShowUnavailableToons_CheckedChanged);
             // 
+            // labelFeatures
+            // 
+            this.labelFeatures.AutoSize = true;
+            this.labelFeatures.Location = new System.Drawing.Point(169, 361);
+            this.labelFeatures.Name = "labelFeatures";
+            this.labelFeatures.Size = new System.Drawing.Size(35, 12);
+            this.labelFeatures.TabIndex = 60;
+            this.labelFeatures.Text = "Feats";
+            // 
             // FrameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1432, 999);
+            this.ClientSize = new System.Drawing.Size(1250, 837);
+            this.Controls.Add(this.labelFeatures);
             this.Controls.Add(this.checkBoxShowUnavailableToons);
             this.Controls.Add(this.labelSkills);
             this.Controls.Add(this.labelPalam);
             this.Controls.Add(this.labelStatus);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.labelKeYin);
             this.Controls.Add(this.labelHaoGan);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.listBoxToons);
             this.Controls.Add(this.textBoxSearchByNamePinyin);
@@ -193,14 +183,13 @@ namespace era_tw_trainer
         private System.Windows.Forms.TextBox textBoxSearchByNamePinyin;
         private System.Windows.Forms.ListBox listBoxToons;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label labelHaoGan;
         private System.Windows.Forms.Label labelKeYin;
         private System.Windows.Forms.Timer timerForLockLoop;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.Label labelPalam;
         private System.Windows.Forms.Label labelSkills;
         private System.Windows.Forms.CheckBox checkBoxShowUnavailableToons;
+        private System.Windows.Forms.Label labelFeatures;
     }
 }

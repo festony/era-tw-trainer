@@ -339,6 +339,7 @@ namespace era_tw_trainer.TrainerRelated
         积攒度 = 0x0AB0,
         登场 = 0x0B50, // 1: 未登场
         妊娠 = 0x1C48
+            //= 0x1C70: 育儿时间
             // 0x1028: 腔注入总量
     }
 

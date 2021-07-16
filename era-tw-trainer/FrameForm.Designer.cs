@@ -43,6 +43,7 @@ namespace era_tw_trainer
             this.checkBoxShowUnavailableToons = new System.Windows.Forms.CheckBox();
             this.labelFeatures = new System.Windows.Forms.Label();
             this.buttonAllServ = new System.Windows.Forms.Button();
+            this.buttonAllHorny = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonScan
@@ -165,11 +166,22 @@ namespace era_tw_trainer
             this.buttonAllServ.UseVisualStyleBackColor = true;
             this.buttonAllServ.Click += new System.EventHandler(this.buttonAllServ_Click);
             // 
+            // buttonAllHorny
+            // 
+            this.buttonAllHorny.Location = new System.Drawing.Point(1163, 60);
+            this.buttonAllHorny.Name = "buttonAllHorny";
+            this.buttonAllHorny.Size = new System.Drawing.Size(75, 53);
+            this.buttonAllHorny.TabIndex = 62;
+            this.buttonAllHorny.Text = "All Horny";
+            this.buttonAllHorny.UseVisualStyleBackColor = true;
+            this.buttonAllHorny.Click += new System.EventHandler(this.buttonAllHorny_Click);
+            // 
             // FrameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 837);
+            this.Controls.Add(this.buttonAllHorny);
             this.Controls.Add(this.buttonAllServ);
             this.Controls.Add(this.labelFeatures);
             this.Controls.Add(this.checkBoxShowUnavailableToons);
@@ -204,5 +216,6 @@ namespace era_tw_trainer
         private System.Windows.Forms.CheckBox checkBoxShowUnavailableToons;
         private System.Windows.Forms.Label labelFeatures;
         private System.Windows.Forms.Button buttonAllServ;
+        private System.Windows.Forms.Button buttonAllHorny;
     }
 }

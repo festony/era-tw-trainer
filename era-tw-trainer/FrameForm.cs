@@ -135,7 +135,7 @@ namespace era_tw_trainer
             int x = textBoxHaoGanSubAddr.Location.X + 86;
             int y = textBoxHaoGanSubAddr.Location.Y;
 
-            foreach (var field in new HaoGanAreaFields[] { HaoGanAreaFields.好感, HaoGanAreaFields.依赖, HaoGanAreaFields.妊娠, HaoGanAreaFields.登场 })
+            foreach (var field in new HaoGanAreaFields[] { HaoGanAreaFields.好感, HaoGanAreaFields.依赖, HaoGanAreaFields.妊娠, HaoGanAreaFields.积攒度, HaoGanAreaFields.登场 })
             {
                 CustomizedTextBox textBox = new CustomizedTextBox("customizedTextBox_" + field.ToString(), trainer, toon, AreaIndexes.HAO_GAN_AREA, (int)field);
                 textBox.Location = new Point(x, y);
@@ -789,7 +789,8 @@ namespace era_tw_trainer
 
         private void buttonAllServ_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < trainer.names.Count; i++)
+            //for (int i = 0; i < trainer.names.Count; i++)
+            foreach (int i in overAllIndexToToonNameIndex.Keys)
             {
                 if (trainer.player != trainer.toons[i] && trainer.readToonProp(trainer.toons[i], AreaIndexes.HAO_GAN_AREA, (int)HaoGanAreaFields.登场) == 0)
                 {
@@ -799,9 +800,20 @@ namespace era_tw_trainer
             }
         }
 
+        private void buttonAllHorny_Click(object sender, EventArgs e)
+        {
+            //for (int i = 0; i < trainer.names.Count; i++)
+            foreach (int i in overAllIndexToToonNameIndex.Keys)
+            {
+                if (trainer.player != trainer.toons[i] && trainer.readToonProp(trainer.toons[i], AreaIndexes.HAO_GAN_AREA, (int)HaoGanAreaFields.登场) == 0)
+                {
+                    trainer.writeToonProp(trainer.toons[i], AreaIndexes.HAO_GAN_AREA, (int)HaoGanAreaFields.积攒度, 10000);
+                }
+            }
+        }
+
 
         // TODO:
-        // 1. yu qiu bu man - search
 
     }
 }

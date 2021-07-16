@@ -25,6 +25,7 @@ namespace era_tw_trainer
         public List<IntPtr> possibleMark04Addresses = new List<IntPtr>();
 
         public GameToon player = null;
+        public int playerIndex = -1;
 
         public List<GameToon> toons = new List<GameToon>();
 
@@ -427,6 +428,7 @@ namespace era_tw_trainer
             possibleMark54Addresses = new List<IntPtr>();
             toons = new List<GameToon>();
             player = null;
+            playerIndex = -1;
             //Trace.WriteLine("---- debug 2");
 
             IntPtr addr = new IntPtr(proc_min_address.ToInt64());
@@ -552,6 +554,7 @@ namespace era_tw_trainer
                                         if (readToonProp(toon, AreaIndexes.MAX_STATUS_AREA, (int)StatusAreaFields.TPS) > 0)
                                         {
                                             player = toon;
+                                            playerIndex = toons.Count - 1;
                                         }
                                     }
                                 }
@@ -607,12 +610,16 @@ namespace era_tw_trainer
             {
                 var n = toons[i].name;
                 bool contain = true;
-                foreach(var cres in chars)
+                // always include player in search result
+                if (toons[i] != player)
                 {
-                    if (!PinYinMap.match(cres, n))
+                    foreach (var cres in chars)
                     {
-                        contain = false;
-                        break;
+                        if (!PinYinMap.match(cres, n))
+                        {
+                            contain = false;
+                            break;
+                        }
                     }
                 }
                 if (contain)

@@ -16,6 +16,7 @@ namespace era_tw_trainer
     {
         private Trainer trainer;
         private List<string> toonNames;
+        private Dictionary<int, int> overAllIndexToToonNameIndex;
         private Dictionary<int, List<LockValueCheckBox>> lockValueCheckBoxLists;
         Dictionary<int, List<Control>> toonPanels;
         private int currToon = -1;
@@ -26,6 +27,7 @@ namespace era_tw_trainer
             InitializeComponent();
             trainer = new Trainer();
             toonNames = new List<string>();
+            overAllIndexToToonNameIndex = new Dictionary<int, int>();
             lockValueCheckBoxLists = new Dictionary<int, List<LockValueCheckBox>>();
             toonPanels = new Dictionary<int, List<Control>>();
         }
@@ -47,6 +49,7 @@ namespace era_tw_trainer
                     continue;
                 }
                 toonNames.Add(text);
+                overAllIndexToToonNameIndex[i] = toonNames.Count - 1;
             }
 
             clearSearchRes();
@@ -707,7 +710,8 @@ namespace era_tw_trainer
         private List<string> searchNamesByPinyin(string pinyin)
         {
             var indexes = trainer.findNameMatch(pinyin);
-            return indexes.Select(i => toonNames[i]).ToList();
+
+            return indexes.Where(i => overAllIndexToToonNameIndex.ContainsKey(i)).Select(i => toonNames[overAllIndexToToonNameIndex[i]]).ToList();
         }
 
         private void updateSearchResult(List<string> newNameList)
@@ -798,7 +802,6 @@ namespace era_tw_trainer
 
         // TODO:
         // 1. yu qiu bu man - search
-        // 2. search result always show player
 
     }
 }

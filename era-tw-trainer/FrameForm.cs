@@ -648,20 +648,21 @@ namespace era_tw_trainer
 
 
 
-            controls.ForEach(c => c.Hide());
-            this.Controls.AddRange(controls.ToArray());
+            //controls.ForEach(c => c.Hide());
+            //this.Controls.AddRange(controls.ToArray());
 
             return controls;
         }
 
         private void showToon(int index)
         {
-            this.toonPanels[index].ForEach(c => c.Show());
+            //this.toonPanels[index].ForEach(c => this.Controls.Add(c));
+            this.Controls.AddRange(this.toonPanels[index].ToArray());
         }
 
         private void hideToon(int index)
         {
-            this.toonPanels[index].ForEach(c => c.Hide());
+            this.toonPanels[index].ForEach(c => this.Controls.Remove(c));
         }
 
         private void setPanelToon(int index)
@@ -798,7 +799,6 @@ namespace era_tw_trainer
         // TODO:
         // 1. yu qiu bu man - search
         // 2. search result always show player
-        // 3. maybe instead of show / hide, directly remove from / add into this.Controls?
 
     }
 }

@@ -42,6 +42,7 @@ namespace era_tw_trainer
             this.labelSkills = new System.Windows.Forms.Label();
             this.checkBoxShowUnavailableToons = new System.Windows.Forms.CheckBox();
             this.labelFeatures = new System.Windows.Forms.Label();
+            this.buttonAllServ = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonScan
@@ -154,11 +155,22 @@ namespace era_tw_trainer
             this.labelFeatures.TabIndex = 60;
             this.labelFeatures.Text = "Feats";
             // 
+            // buttonAllServ
+            // 
+            this.buttonAllServ.Location = new System.Drawing.Point(1163, 1);
+            this.buttonAllServ.Name = "buttonAllServ";
+            this.buttonAllServ.Size = new System.Drawing.Size(75, 53);
+            this.buttonAllServ.TabIndex = 61;
+            this.buttonAllServ.Text = "All Serv";
+            this.buttonAllServ.UseVisualStyleBackColor = true;
+            this.buttonAllServ.Click += new System.EventHandler(this.buttonAllServ_Click);
+            // 
             // FrameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 837);
+            this.Controls.Add(this.buttonAllServ);
             this.Controls.Add(this.labelFeatures);
             this.Controls.Add(this.checkBoxShowUnavailableToons);
             this.Controls.Add(this.labelSkills);
@@ -191,5 +203,6 @@ namespace era_tw_trainer
         private System.Windows.Forms.Label labelSkills;
         private System.Windows.Forms.CheckBox checkBoxShowUnavailableToons;
         private System.Windows.Forms.Label labelFeatures;
+        private System.Windows.Forms.Button buttonAllServ;
     }
 }

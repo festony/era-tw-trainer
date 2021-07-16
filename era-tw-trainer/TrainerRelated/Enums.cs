@@ -336,6 +336,7 @@ namespace era_tw_trainer.TrainerRelated
     {
         好感 = 0x20,
         依赖 = 0x30,
+        积攒度 = 0x0AB0,
         登场 = 0x0B50, // 1: 未登场
         妊娠 = 0x1C48
             // 0x1028: 腔注入总量

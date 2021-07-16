@@ -782,8 +782,23 @@ namespace era_tw_trainer
             updateToonNameList(checkBoxShowUnavailableToons.Checked);
         }
 
+        private void buttonAllServ_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < trainer.names.Count; i++)
+            {
+                if (trainer.player != trainer.toons[i] && trainer.readToonProp(trainer.toons[i], AreaIndexes.HAO_GAN_AREA, (int)HaoGanAreaFields.登场) == 0)
+                {
+                    trainer.writeToonProp(trainer.toons[i], AreaIndexes.SKILLS_AREA, (int)SkillsAreaGeneralFields.从顺, 120);
+                    trainer.writeToonProp(trainer.toons[i], AreaIndexes.SKILLS_AREA, (int)SkillsAreaGeneralFields.侍奉, 120);
+                }
+            }
+        }
+
 
         // TODO:
+        // 1. yu qiu bu man - search
+        // 2. search result always show player
+        // 3. maybe instead of show / hide, directly remove from / add into this.Controls?
 
     }
 }
